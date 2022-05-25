@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{ range (.Site.RegularPages.GroupByPublishDate "2006").Reverse }}
+<ul style="list-style-type:none;">
+  <h3>{{ .Key }}</h3>
+  {{ range .Pages }}
+  <li>
+    <div class="box-list">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </div>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
+{{ end }}

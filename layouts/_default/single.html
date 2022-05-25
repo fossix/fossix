@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{ .Content }}
+<hr>
+
+<div class="float-right">
+  {{ with .Params.tags }}
+    {{ range . }}
+      <a href="{{ "tags" | absURL }}{{ . | urlize }}" class="badge badge-dark">{{ . }}</a>
+    {{ end }}
+  {{ end }}
+</div>
+
+{{ end }}

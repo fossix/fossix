@@ -1,0 +1,36 @@
+<head>
+  {{ range site.Params.custom_css }}
+    <link rel="stylesheet" href="{{ relURL (.) }}">
+  {{ end }}
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="/fossix.css" rel="stylesheet" media="screen">
+
+  <title>
+    {{ .Site.Title }} - {{ default .Site.BaseURL ( .Page.Title )}}
+  </title>
+
+  <script
+    data-ad-client="ca-pub-0086577717613608" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-10436185-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-10436185-1');
+  </script>
+
+  <style>
+  </style>
+
+  <!-- Fix this -->
+  <!-- {% seo %} -->
+  <!-- For different screen types -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+</head>
