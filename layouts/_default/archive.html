@@ -1,14 +1,23 @@
 {{ define "main" }}
-{{ range (.Site.RegularPages.GroupByPublishDate "2006").Reverse }}
-<ul style="list-style-type:none;">
-  <h3>{{ .Key }}</h3>
-  {{ range .Pages }}
+<div class="row content-title">
+  <h1>Archive</h1>
+</div>
+{{ range (.Site.RegularPages.GroupByDate "2006").Reverse }}
+<!-- This is to omit static pages -->
+{{ if gt (len (where .Pages "Section" "posts")) 0 }}
+<h4>{{ .Key }}</h4>
+<ul>
+  {{ range .Pages.Reverse }}
   <li>
-    <div class="box-list">
+    <p>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
-    </div>
+      <span class="badge float-right">
+        {{ .Date.Format "January, 2006" }}
+      </span>
+    </p>
   </li>
   {{ end }}
 </ul>
+{{end}}
 {{ end }}
 {{ end }}

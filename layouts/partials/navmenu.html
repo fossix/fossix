@@ -1,13 +1,14 @@
+{{ $class := "list-group-item list-group-item-action" }}
 <div class="list-group list-group-flush">
-  <a href="{{ "/" | relURL }}" class="list-group-item list-group-item-action">
+  <a href="{{ "/" | relURL }}" class="{{ $class }} ">
     Home
   </a>
   {{ range $idx, $category := .Site.Params.categories }}
-  <a href="{{ "categories/" | relURL }}{{ $category | urlize }}" class="list-group-item list-group-item-action">
+  <a href="{{ "categories/" | relURL }}{{$category | urlize }}" class="{{ $class }}">
     {{ $category }}
   </a>
   {{ end }}
-  <a href="{{ "archive/" | relURL }}" class="list-group-item list-group-item-action">
+  <a href="{{ "archive/" | relURL }}" class="{{ $class }}">
     Archive
   </a>
 </div>

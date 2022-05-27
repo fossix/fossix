@@ -1,4 +1,16 @@
 {{ define "main" }}
+<div class="row content-title">
+  <h1>{{ .Title }}</h1>
+</div>
+
+<div class="alert alert-light">
+  <span class="badge">Posted on: {{ .Date.Format "2 January, 2006"}}</span>
+  <div class="float-right">
+    <span> By {{ $.Param "author" }}</span>
+  </div>
+</div>
+
+<hr>
 {{ .Content }}
 <hr>
 
