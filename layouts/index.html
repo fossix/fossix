@@ -9,7 +9,7 @@
   </div>
 </div>
 
-{{ range first 3 (where .Site.RegularPages "Params.categories" "articles") }}
+{{ range first 3 .Site.RegularPages }}
 <div class="box">
   <a href="{{ .RelPermalink }}" class="item">
     <h3>{{ .Title }}</h3>
@@ -31,9 +31,9 @@
 
 {{ end }}
 
-<h2>More&hellip;</h2>
+<h2 style="padding-top: 10px;">Older</h2>
 <ul style="list-style-type:none;">
-  {{ range first 10 (after 3 (where .Site.RegularPages "Params.categories" "articles")) }}
+  {{ range first 10 (after 3 (.Site.RegularPages)) }}
   <li>
     <div class="box-list">
       <a href="{{ .RelPermalink }}" class="item">

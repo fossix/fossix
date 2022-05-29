@@ -1,0 +1,32 @@
+{{ define "main" }}
+  {{ $pathParts := split (trim ((urls.Parse .Permalink).Path) "/") "/" }}
+  {{ $taxonomy := index $pathParts 0 }}
+  {{ $term := index $pathParts 1 }}
+  {{ $termPage := site.GetPage (printf "%s/%s" $taxonomy $term) }}
+
+<ul style="list-style-type:none;">
+  {{ range $termPage.Pages }}
+<li style="padding-bottom: 15px;">
+  <div>
+    <span class="badge">
+      {{ .Date.Format "January, 2006" }}
+    </span>
+
+    <div class="float-right">
+      {{ range (.GetTerms "tags") }}
+      <a href="{{ .Permalink }}" class="badge badge-dark">
+        {{ .LinkTitle }}
+      </a>
+      {{ end }}
+    </div>
+
+    <div>
+      <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+        <h4> {{ .LinkTitle }} </h4>
+      </a>
+    </div>
+  </div>
+</li>
+{{ end }}
+</ul>
+{{ end }}
