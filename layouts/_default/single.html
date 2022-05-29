@@ -10,15 +10,52 @@
   <div class="float-right">
     {{ with .Params.tags }}
     {{ range . }}
-    <a href="{{ "tags" | absURL }}{{ . | urlize }}" class="badge badge-light">#{{ . }}</a>
+    <a href="{{ "tags" | absURL }}/{{ . | urlize }}" class="badge badge-light">#{{ . }}</a>
     {{ end }}
     {{ end }}
   </div>
   <span class="badge"> </span>
 </div>
 
-<hr>
 {{ .Content }}
-<hr>
 
+<!-- List other pages in this series -->
+{{ $series_name := .Params.series }}
+{{ $series := $series_name | urlize }}
+{{ $current_page := .Page.RelPermalink }}
+
+{{ range $key, $taxonomy := .Site.Taxonomies.series }}
+{{ if eq $key $series }}
+
+Continue reading other posts in the series, <i> "{{ $series_name }}" </i>
+<div>
+  <ul style="list-style-type:none;">
+    {{ range $taxonomy.Pages.ByDate }}
+    {{ if ne $current_page .RelPermalink }}
+    <li class="box-list">
+      <a href="{{ .Permalink }}" class="item">{{ .LinkTitle }}</a>
+    </li>
+    {{ end }}
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{ define "rsidebar" }}
+{{ if not .Page.Params.series }}
+
+<div>
+  {{ $related := .Site.RegularPages.Related . | first 5 }}
+  {{ with $related }}
+  <h5>You might also like</h5>
+  <ul style="list-style-type:none;">
+    {{ range . }}
+    <li class="box-list"><a href="{{ .RelPermalink }}" class="item">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</div>
+{{ end }}
 {{ end }}

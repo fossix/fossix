@@ -6,10 +6,15 @@
     <div class="container-fluid" style="margin-top:25px;">
       <div class="row">
         <div class="col-lg-3">
+          {{ block "sidebar" . }}{{ end }}
         </div>
         <div class="col-lg-6 content">
           {{- block "main" . }}{{- end }}
         </div>
+        <div class="col-lg-3">
+          {{ block "rsidebar" . }}{{ end }}
+        </div>
+
         {{- partialCached "footer.html" . -}}
       </div>
     </div>
