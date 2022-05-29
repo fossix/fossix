@@ -4,7 +4,7 @@
 </div>
 {{ range (.Site.RegularPages.GroupByDate "2006").Reverse }}
 <!-- This is to omit static pages -->
-{{ if gt (len (where .Pages "Section" "posts")) 0 }}
+{{ if gt (len (where .Pages "Section" "articles")) 0 }}
 <h4>{{ .Key }}</h4>
 <ul>
   {{ range .Pages.Reverse }}
