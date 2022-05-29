@@ -9,38 +9,22 @@
   </div>
 </div>
 
-{{ range first 3 .Site.RegularPages }}
+{{ range first 10 .Site.RegularPages }}
 <div class="box">
   <a href="{{ .RelPermalink }}" class="item">
     <h3>{{ .Title }}</h3>
   </a>
-  <p class="lead">
+  <p>
     {{ .Summary }}
-    <a href="{{ .Permalink }}" class="float-right">
-      More &rarr;
-    </a>
   </p>
 
   {{ range (.GetTerms "tags") }}
-  <a href="{{ .Permalink }}" class="badge badge-dark">
-    {{ .LinkTitle }}
+  <a href="{{ .Permalink }}" class="badge badge-light">
+    #{{ .LinkTitle }}
   </a>
   {{ end }}
   <span class="badge float-right">{{ .Date.Format "2 January, 2006" }}</span>
 </div>
 
 {{ end }}
-
-<h2 style="padding-top: 10px;">Older</h2>
-<ul style="list-style-type:none;">
-  {{ range first 10 (after 3 (.Site.RegularPages)) }}
-  <li>
-    <div class="box-list">
-      <a href="{{ .RelPermalink }}" class="item">
-        <h4>{{ .Title }}</h4>
-      </a>
-    </div>
-  </li>
-  {{ end }}
-</ul>
 {{ end }}

@@ -1,25 +1,24 @@
 {{ define "main" }}
-<div class="row content-title">
-  <h1>{{ .Title }}</h1>
-</div>
+<h1>{{ .Title }}</h1>
 
-<div class="alert alert-light">
-  <span class="badge">Posted on: {{ .Date.Format "2 January, 2006"}}</span>
-  <div class="float-right">
-    <span> By {{ $.Param "author" }}</span>
+<div class="alert-light">
+  <div class="float-left">
+    <span class="badge">
+      {{ .Date.Format "2 January, 2006" }} | {{ $.Param "author" }}
+    </span>
   </div>
+  <div class="float-right">
+    {{ with .Params.tags }}
+    {{ range . }}
+    <a href="{{ "tags" | absURL }}{{ . | urlize }}" class="badge badge-light">#{{ . }}</a>
+    {{ end }}
+    {{ end }}
+  </div>
+  <span class="badge"> </span>
 </div>
 
 <hr>
 {{ .Content }}
 <hr>
-
-<div class="float-right">
-  {{ with .Params.tags }}
-    {{ range . }}
-      <a href="{{ "tags" | absURL }}{{ . | urlize }}" class="badge badge-dark">{{ . }}</a>
-    {{ end }}
-  {{ end }}
-</div>
 
 {{ end }}
