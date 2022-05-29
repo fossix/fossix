@@ -4,6 +4,7 @@
   {{ $term := index $pathParts 1 }}
   {{ $termPage := site.GetPage (printf "%s/%s" $taxonomy $term) }}
 
+<h2><i>#{{ title $term }}</i></h2>
 <ul style="list-style-type:none;">
   {{ range $termPage.Pages }}
 <li style="padding-bottom: 15px;">
@@ -24,6 +25,7 @@
       <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
         <h4> {{ .LinkTitle }} </h4>
       </a>
+      {{ .Summary | truncate 250 }}
     </div>
   </div>
 </li>

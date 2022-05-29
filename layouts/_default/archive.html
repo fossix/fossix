@@ -9,11 +9,12 @@
 <ul>
   {{ range .Pages.Reverse }}
   <li>
-    <p>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-      <span class="badge float-right">
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    <span class="badge float-right">
         {{ .Date.Format "January, 2006" }}
-      </span>
+    </span>
+    <p>
+      {{ .Summary | truncate 200 }}
     </p>
   </li>
   {{ end }}
