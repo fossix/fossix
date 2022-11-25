@@ -13,7 +13,7 @@ body {
 .front-site-title {
     font-family: 'Merienda', cursive !important;
     font-weight: bold;
-    font-size: 34px;
+    font-size: 44px;
 }
 
 pre,code {
@@ -31,7 +31,19 @@ pre,code {
     height:125%;
 }
 
-.content {
+.content h1 {
+}
+
+.content h2 {
+    color: #e65c00;
+}
+
+.content h3 {
+    color: #e65c00;
+}
+
+.content h4 {
+    color: #e65c00;
 }
 
 .content p {
